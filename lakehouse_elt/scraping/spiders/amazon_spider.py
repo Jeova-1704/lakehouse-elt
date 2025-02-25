@@ -6,7 +6,7 @@ from lakehouse_elt.scraping.items import AmazonProductItem
 
 
 class AmazonSpiderSpider(scrapy.Spider):
-    load_dotenv()
+    load_dotenv(override=True)
     name = 'amazon_spider'
     allowed_domains = ['www.amazon.com.br', 'api.scraperapi.com']
     start_urls = ['https://www.amazon.com.br/s?k=smartphone']

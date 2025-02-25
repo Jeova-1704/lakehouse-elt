@@ -8,7 +8,7 @@ import json
 
 class SupabasePipeline:
     def __init__(self):
-        load_dotenv()
+        load_dotenv(override=True)
         self.URL = os.getenv('LAKEHOUSE_URL')
         self.KEY = os.getenv('LAKEHOUSE_KEY')
         self.BUCKET_NAME = os.getenv('BUCKET_NAME')
