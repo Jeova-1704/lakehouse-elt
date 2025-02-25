@@ -1,0 +1,29 @@
+[0m20:26:31.874245 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002348BE29E80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000023489FC1450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002348CC13890>]}
+
+
+============================== 20:26:31.993710 | 1649a52f-6656-46cf-abbf-a117ab679ebe ==============================
+[0m20:26:31.993710 [info ] [MainThread]: Running with dbt=1.9.2
+[0m20:26:31.994775 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'debug': 'False', 'fail_fast': 'False', 'log_path': 'logs', 'version_check': 'True', 'profiles_dir': 'C:\\Users\\jeova\\.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'introspect': 'True', 'invocation_command': 'dbt init lakehouse_project', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'target_path': 'None', 'static_parser': 'True', 'send_anonymous_usage_stats': 'True'}
+[0m20:26:32.429343 [debug] [MainThread]: Starter project path: C:\Users\jeova\AppData\Local\pypoetry\Cache\virtualenvs\lakehouse-elt-8F94bwDu-py3.13\Lib\site-packages\dbt\include\starter_project
+[0m20:26:32.460969 [info ] [MainThread]: 
+Your new dbt project "lakehouse_project" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m20:26:32.462224 [info ] [MainThread]: Setting up your profile.
+[0m20:27:45.447584 [info ] [MainThread]: Profile lakehouse_project written to C:\Users\jeova\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m20:27:45.450253 [debug] [MainThread]: Command `dbt init` succeeded at 20:27:45.450025 after 73.80 seconds
+[0m20:27:45.450690 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002348E0AB360>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002348E1C57F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002348DF449E0>]}
+[0m20:27:45.451084 [debug] [MainThread]: Flushing usage events
+[0m20:27:46.329432 [debug] [MainThread]: An error was encountered while trying to flush usage events
