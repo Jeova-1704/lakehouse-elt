@@ -32,12 +32,19 @@ class SupabasePipeline:
         mes = now.strftime('%m')
 
         folder_path = f'{ano}/{mes}'
-
         full_path = f'{folder_path}/{self.FILE_NAME}'
 
         json_data = json.dumps(self.itens, indent=4)
 
         try:
+            existing_files = self.client.storage.from_(self.BUCKET_NAME).list(folder_path)
+            
+            if existing_files and isinstance(existing_files, list):
+                for file in existing_files:
+                    file_path = f"{folder_path}/{file['name']}"
+                    self.client.storage.from_(self.BUCKET_NAME).remove(file_path)
+                    spider.log(f"Deleted old file: {file_path}")
+
             response = self.client.storage.from_(self.BUCKET_NAME).upload(
                 full_path,
                 json_data.encode('utf-8'),
