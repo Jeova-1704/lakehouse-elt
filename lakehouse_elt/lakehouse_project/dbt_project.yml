@@ -32,4 +32,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   lakehouse_project:
     silver:
+      materialized: incremental
+    gold:
       materialized: table
