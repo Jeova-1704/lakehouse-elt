@@ -1,0 +1,121 @@
+version: 2
+
+models:
+  - name: gold_comparative_analysis
+    description: "Comparação entre marcas, mostrando preço médio, avaliação média e quantidade de produtos."
+    columns:
+      - name: brand
+        description: "Nome da marca do smartphone."
+      - name: avg_price
+        description: "Preço médio dos smartphones da marca."
+      - name: avg_rating
+        description: "Avaliação média dos smartphones da marca."
+      - name: total_products
+        description: "Quantidade total de produtos dessa marca na análise.
+
+
+  - name: gold_memory_distribution
+    description: "Distribuição de RAM e ROM por marca."
+    columns:
+      - name: brand
+        description: "Nome da marca do smartphone."
+      - name: ram_capacity
+        description: "Capacidade de memória RAM do modelo."
+      - name: rom_capacity
+        description: "Capacidade de armazenamento ROM do modelo."
+      - name: total_products
+        description: "Quantidade de smartphones com essa configuração de RAM e ROM."
+      - name: avg_price
+        description: "Preço médio dos smartphones com essa configuração."
+
+
+  - name: gold_price_analysis
+    description: "Resumo dos preços dos smartphones, incluindo mínimo, máximo e médio por modelo."
+    columns:
+      - name: brand
+        description: "Nome da marca do smartphone."
+      - name: model
+        description: "Modelo do smartphone."
+      - name: avg_price
+        description: "Preço médio do modelo."
+      - name: min_price
+        description: "Preço mínimo encontrado para o modelo."
+      - name: max_price
+        description: "Preço máximo encontrado para o modelo."
+      - name: total_products
+        description: "Quantidade total de produtos desse modelo na análise."
+
+
+  - name: gold_price_segments
+    description: "Segmentação dos smartphones por faixa de preço."
+    columns:
+      - name: brand
+        description: "Nome da marca do smartphone."
+      - name: model
+        description: "Modelo do smartphone."
+      - name: price
+        description: "Preço do smartphone."
+      - name: price_segment
+        description: "Classificação do smartphone (Econômico, Intermediário ou Premium)."
+
+
+  - name: gold_price_trend
+    description: "Evolução dos preços dos smartphones ao longo do tempo."
+    columns:
+      - name: brand
+        description: "Nome da marca do smartphone."
+      - name: model
+        description: "Modelo do smartphone."
+      - name: extracted_date
+        description: "Data da extração do preço."
+      - name: avg_price
+        description: "Preço médio do modelo na data extraída."
+
+
+  - name: gold_rating_analysis
+    description: "Análise das avaliações dos smartphones, mostrando os melhores modelos avaliados."
+    columns:
+      - name: brand
+        description: "Nome da marca do smartphone."
+      - name: model
+        description: "Modelo do smartphone."
+      - name: avg_rating
+        description: "Média das avaliações dos usuários para o modelo."
+      - name: total_products
+        description: "Quantidade total de produtos avaliados desse modelo."
+
+
+  - name: gold_top_10_expensive_smartphones
+    description: "Lista dos 10 smartphones mais caros da base de dados."
+    columns:
+      - name: brand
+        description: "Nome da marca do smartphone."
+      - name: model
+        description: "Modelo do smartphone."
+      - name: price
+        description: "Preço do smartphone."
+      - name: ram_capacity
+        description: "Capacidade de memória RAM do modelo."
+      - name: rom_capacity
+        description: "Capacidade de armazenamento ROM do modelo."
+      - name: rating_value
+        description: "Nota de avaliação do smartphone."
+
+
+  - name: gold_top_10_cheapest_smartphones
+    description: "Lista dos 10 smartphones mais baratos da base de dados."
+    columns:
+      - name: brand
+        description: "Nome da marca do smartphone."
+      - name: model
+        description: "Modelo do smartphone."
+      - name: price
+        description: "Preço do smartphone."
+      - name: ram_capacity
+        description: "Capacidade de memória RAM do modelo."
+      - name: rom_capacity
+        description: "Capacidade de armazenamento ROM do modelo."
+      - name: rating_value
+        description: "Nota de avaliação do smartphone."
+
+        
