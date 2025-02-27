@@ -1,7 +1,19 @@
-para executar a extração dos dados usando scrapy e jogar para a camada de staging, basta executar o comando abaixo:
+# 📊 Data Lakehouse - Análise de Smartphones
 
-```bash
-scrapy crawl amazon_spider
+Este projeto implementa um **Data Lakehouse** utilizando **Scrapy, Supabase, PostgreSQL e DBT** para extrair, transformar e analisar dados de smartphones disponíveis no mercado.  
+
+A solução coleta dados da **Amazon** e estrutura as informações em um **Data lakehoue** e permite análise de preços, avaliações e configurações dos dispositivos.  
+
+## **🚀 Arquitetura do projeto**
+[Arquitetura do projeto](/.github/images/project.png)
+
+
+
+## **📁 Estrutura do Projeto**
 ```
+LAKEHOUSE-ELT
+├── .github
+│   ├── images
+│   │   └── project.png
 
-ele já executa a extração, transforma os items no schema e já faz o upload para o bucket do supabase.
+
