@@ -3,8 +3,6 @@
     unique_key='id'
 ) }}
 
-
-
 WITH bronze AS (
     SELECT * FROM public.bronze_amazon_products
 ),
@@ -40,6 +38,7 @@ transformed AS (
         -- Extraindo apenas o número da ROM antes de "GB" e convertendo para inteiro
         ABS(CAST(REGEXP_SUBSTR(product_name, '(^|[^0-9])(32|64|128|256|512)(?=GB)') AS INTEGER)) AS rom_capacity,
 
+        -- Convertendo preço para NUMERIC
         CAST(
             NULLIF(
                 REPLACE(
@@ -47,20 +46,21 @@ transformed AS (
                         REPLACE(TRIM(price_whole), 'R$', ''), 
                         '.', ''
                     ), 
-                    ',', '.'
+                    ',', '.' 
                 ), 
                 ''
             ) AS NUMERIC
         ) AS price,
 
+        -- Convertendo rating_value para NUMERIC
         CAST(
             NULLIF(
                 REPLACE(
                     SPLIT_PART(rating_value, ' ', 1), 
-                    ',', '.' 
+                    ',', '.'
                 ), 
                 ''
-            ) AS FLOAT
+            ) AS NUMERIC
         ) AS rating_value,
 
         extracted_at::TIMESTAMP AS extracted_date
