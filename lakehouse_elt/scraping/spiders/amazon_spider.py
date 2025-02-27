@@ -12,7 +12,7 @@ class AmazonSpiderSpider(scrapy.Spider):
     start_urls = ['https://www.amazon.com.br/s?k=smartphone']
     SCRAPERAPI_KEY = os.getenv('SCRAPERAPI_KEY')
     page_count = 1
-    max_page_count = 10
+    max_page_count = 20
 
     def start_requests(self):
         headers = {'User-Agent': os.getenv('USER_AGENT')}
