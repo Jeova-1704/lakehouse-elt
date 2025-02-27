@@ -1,0 +1,24 @@
+version: 1
+
+models:
+  - name: silver_smartphone
+    description: 'Tabela de dados de smartphones da camada silver, onde os dados são tratados e limpos'
+    columns:
+      - name: id
+        description: 'Identificador único do smartphone'
+        tests:
+          - unique
+      - name: brand
+        description: 'Marca do smartphone'
+      - name: model
+        description: 'Modelo do smartphone'
+      - name: ram_capacity
+        description: 'Capacidade de memória RAM do smartphone'
+      - name: rom_capacity
+        description: 'Capacidade de armazenamento interno do smartphone'
+      - name: price
+        description: 'Preço do smartphone'
+      - name: rating_value
+        description: 'Avaliação do smartphone'
+      - name: extracted_date
+        description: 'Data de extração dos dados'
