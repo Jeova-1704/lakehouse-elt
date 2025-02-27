@@ -5,7 +5,7 @@ Este projeto implementa um **Data Lakehouse** utilizando **Scrapy, Supabase, Pos
 A solução coleta dados da **Amazon** e estrutura as informações em um **Data lakehoue** e permite análise de preços, avaliações e configurações dos dispositivos.  
 
 ## **🚀 Arquitetura do projeto**
-[Arquitetura do projeto](/images/project.png)
+![Arquitetura do projeto](/images/project.png)
 
 
 
