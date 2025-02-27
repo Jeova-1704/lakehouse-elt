@@ -1,0 +1,20 @@
+[0m18:42:55.011335 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000208069E9E80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020804B85450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020807B37ED0>]}
+
+
+============================== 18:42:55.020418 | 9fcc015c-1eca-45ee-b5ea-f11a44479cc5 ==============================
+[0m18:42:55.020418 [info ] [MainThread]: Running with dbt=1.9.2
+[0m18:42:55.021973 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'False', 'log_path': 'logs', 'debug': 'False', 'profiles_dir': 'C:\\Users\\jeova\\.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt debug', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m18:42:55.108018 [info ] [MainThread]: dbt version: 1.9.2
+[0m18:42:55.108775 [info ] [MainThread]: python version: 3.13.1
+[0m18:42:55.109394 [info ] [MainThread]: python path: C:\Users\jeova\AppData\Local\pypoetry\Cache\virtualenvs\lakehouse-elt-8F94bwDu-py3.13\Scripts\python.exe
+[0m18:42:55.109980 [info ] [MainThread]: os info: Windows-11-10.0.22631-SP0
+[0m18:42:55.230775 [info ] [MainThread]: Using profiles dir at C:\Users\jeova\.dbt
+[0m18:42:55.231514 [info ] [MainThread]: Using profiles.yml file at C:\Users\jeova\.dbt\profiles.yml
+[0m18:42:55.231921 [info ] [MainThread]: Using dbt_project.yml file at C:\Users\jeova\programação\conteúdos pessoais\projetos-portifolio\python\engenharia de dados - projeto\lakehouse-ELT\dbt_project.yml
+[0m18:42:55.232512 [error] [MainThread]: Encountered an error:
+Internal Error
+  Profile should not be None if loading profile completed
+[0m18:42:55.233979 [debug] [MainThread]: Command `dbt debug` failed at 18:42:55.233786 after 0.43 seconds
+[0m18:42:55.234373 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020807CA28B0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020807D99C70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000020807C3EBE0>]}
+[0m18:42:55.234729 [debug] [MainThread]: Flushing usage events
+[0m18:42:56.100109 [debug] [MainThread]: An error was encountered while trying to flush usage events
