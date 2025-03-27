@@ -1,6 +1,7 @@
 import psycopg2
 from dotenv import load_dotenv
 import os
+import json
 import polars as pl
 
 
@@ -16,6 +17,74 @@ class LakeHouseConnection:
 
         self.conn = self.create_connection()
         self.create_if_not_exists_table_layer_bronze()
+        self.delete_table_temp()
+        self.create_table_temp()
+        self.delete_stored_procedure()
+        self.create_stored_procedure()
+        
+        
+    def delete_table_temp(self):
+        try:
+            with self.conn.cursor() as cur:
+                cur.execute("""
+                            DROP TABLE IF EXISTS raw_amazon_json;
+                            """)
+                self.conn.commit()
+                print('✅ Tabela Temp deletada com sucesso!')
+        except Exception as e:
+            print(f'❌ Erro ao deletar a tabela Temp: {e}')
+        
+    
+    def create_table_temp(self):
+        try:
+            with self.conn.cursor() as cur:
+                cur.execute("""
+                            CREATE TABLE IF NOT EXISTS raw_amazon_json (
+                                product_name TEXT,
+                                rating_value TEXT,
+                                extracted_at TEXT,
+                                price_whole TEXT
+                            );
+                            """)
+                self.conn.commit()
+                print('✅ Tabela Temp verificada/criada com sucesso!')
+        except Exception as e:
+            print(f'❌ Erro ao criar/verificar a tabela Temp: {e}')
+            
+    
+    def delete_stored_procedure(self):
+        try:
+            with self.conn.cursor() as cur:
+                cur.execute("""
+                            DROP PROCEDURE IF EXISTS load_raw_to_bronze;
+                            """)
+                print('✅ Stored Procedure deletada com sucesso!')
+        except Exception as e:
+            print(f'❌ Erro ao deletar Stored Procedure: {e}')
+    
+    
+    def create_stored_procedure(self):
+        try:
+            with self.conn.cursor() as cur:
+                cur.execute("""
+                            CREATE OR REPLACE PROCEDURE load_raw_to_bronze()
+                            LANGUAGE plpgsql
+                            AS $$
+                            BEGIN
+                                INSERT INTO bronze_amazon_products (product_name, price_whole, rating_value, extracted_at)
+                                SELECT
+                                    product_name,
+                                    price_whole,
+                                    rating_value,
+                                    extracted_at
+                                FROM raw_amazon_json;
+                            END $$;
+                            """)
+                self.conn.commit()
+                print('✅ Stored Procedure criada com sucesso!')
+        except Exception as e:
+            print(f'❌ Erro ao criar Stored Procedure: {e}')
+
 
     def create_connection(self):
         """Cria e retorna uma conexão com o PostgreSQL no Supabase."""
@@ -56,45 +125,26 @@ class LakeHouseConnection:
         """Insere um DataFrame Polars na tabela Bronze do PostgreSQL."""
         try:
             with self.conn.cursor() as cur:
-                for row in df.iter_rows(named=True):
-                    cur.execute(
-                        """
-                        INSERT INTO bronze_amazon_products (product_name, price_whole, rating_value, extracted_at)
+                for row in df.rows():
+                    product_name = row[0]
+                    rating_value = row[1]
+                    extracted_at = row[2]
+                    price_whole = row[3]
+                    cur.execute(""" 
+                        INSERT INTO raw_amazon_json (product_name, rating_value, extracted_at, price_whole)
                         VALUES (%s, %s, %s, %s);
-                    """,
-                        (
-                            row['product_name'],
-                            row['price_whole'],
-                            row['rating_value'],
-                            row['extracted_at'],
-                        ),
-                    )
-
+                    """, (product_name, rating_value, extracted_at, price_whole))
+                    
+                cur.execute("CALL load_raw_to_bronze();")
+                
                 self.conn.commit()
-                print('✅ DataFrame inserido na tabela Bronze com sucesso!')
-
+                print('✅ Dados inseridos na tabela Bronze com sucesso!')
+                  
         except Exception as e:
-            print(f'❌ Erro ao inserir DataFrame na tabela Bronze: {e}')
-
+            print(f'❌ Erro ao inserir dados na tabela Bronze: {e}')
+            
     def close_connection(self):
         """Fecha a conexão com o PostgreSQL."""
         if self.conn:
             self.conn.close()
             print('✅ Conexão com o PostgreSQL encerrada!')
-
-
-if __name__ == '__main__':
-    lakehouse_conn = LakeHouseConnection()
-
-    data = {
-        'product_name': ['Smartphone X', 'Smartphone Y'],
-        'price_whole': ['R$ 2.199,90', 'R$ 1.399,05'],
-        'rating_value': ['4.8', '4.7'],
-        'extracted_at': ['2025-02-25', '2025-02-25'],
-    }
-
-    df_test = pl.DataFrame(data)
-
-    lakehouse_conn.insert_dataframe_to_bronze(df_test)
-
-    lakehouse_conn.close_connection()

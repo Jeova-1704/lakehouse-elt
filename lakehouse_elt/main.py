@@ -25,7 +25,7 @@ def execute_transform_to_dbt():
 def main():
     execute_scrapy()
     execute_load_to_bronze()
-    execute_transform_to_dbt()
+    # execute_transform_to_dbt()
 
 
 if __name__ == '__main__':

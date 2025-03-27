@@ -42,11 +42,3 @@ class BucketConnection:
         except Exception as e:
             print(f'❌ Erro ao carregar arquivo do Supabase: {e}')
             return None
-
-
-if __name__ == '__main__':
-    bucket_conn = BucketConnection()
-    df = bucket_conn.get_all_files_in_bucket()
-
-    if df is not None:
-        print(df.head())
